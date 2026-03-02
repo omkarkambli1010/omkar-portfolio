@@ -1,0 +1,240 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-sticky;
+  @include glass-nav;
+  will-change: transform;
+}
+
+.inner {
+  @include flex-between;
+  height: 64px;
+
+  @include respond-to(md) {
+    height: 72px;
+  }
+}
+
+// ── Logo ─────────────────────────────────────────────────────
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  text-decoration: none;
+
+  &:hover .logoText {
+    color: var(--color-accent);
+  }
+}
+
+.logoText {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  transition: color $transition-base;
+}
+
+.logoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: var(--color-accent);
+  margin-top: 2px;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+// ── Desktop Links ────────────────────────────────────────────
+.links {
+  display: none;
+  align-items: center;
+  gap: $space-8;
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+}
+
+.link {
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  position: relative;
+  padding-block: $space-1;
+  transition: color $transition-base;
+  letter-spacing: 0.01em;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: $radius-full;
+    transition: width $transition-base;
+  }
+
+  &:hover,
+  &--active {
+    color: var(--color-text);
+  }
+
+  &:hover::after,
+  &--active::after {
+    width: 100%;
+  }
+}
+
+// ── Actions ──────────────────────────────────────────────────
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.cta {
+  display: none;
+  padding: $space-2 $space-5;
+  border-radius: $radius-full;
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  background: var(--gradient-accent);
+  color: #fff;
+  text-decoration: none;
+  transition: box-shadow $transition-base, transform $transition-base;
+  box-shadow: 0 4px 16px var(--color-glow);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--color-glow);
+  }
+
+  @include respond-to(md) {
+    display: inline-flex;
+  }
+}
+
+// ── Hamburger ────────────────────────────────────────────────
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  padding: $space-1;
+  cursor: pointer;
+
+  @include respond-to(lg) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: $radius-full;
+    transition: all $transition-base;
+    transform-origin: center;
+
+    &:nth-child(1) { width: 100%; }
+    &:nth-child(2) { width: 75%; }
+    &:nth-child(3) { width: 100%; }
+  }
+}
+
+.hamburger--open span {
+  &:nth-child(1) {
+    width: 100%;
+    transform: translateY(7px) rotate(45deg);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  &:nth-child(3) {
+    width: 100%;
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+// ── Mobile Drawer ────────────────────────────────────────────
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  z-index: $z-overlay;
+  background: var(--color-bg-elevated);
+  border-left: 1px solid var(--color-border);
+  padding: 96px $space-8 $space-8;
+  @include flex-col;
+  gap: $space-2;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+
+  nav {
+    @include flex-col;
+    gap: $space-2;
+  }
+}
+
+.drawer--open {
+  transform: translateX(0);
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 $space-3;
+  font-size: $text-2xl;
+  font-family: $font-display;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: $radius-lg;
+  transition: color $transition-base, background $transition-base,
+    transform $transition-base;
+  opacity: 0;
+  transform: translateX(24px);
+
+  .drawer--open & {
+    opacity: 1;
+    transform: translateX(0);
+    transition: color $transition-base, background $transition-base,
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.4s ease;
+  }
+
+  &:hover {
+    color: var(--color-text);
+    background: var(--color-card-hover);
+    transform: translateX(4px) !important;
+  }
+}
+
+.drawerIndex {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: var(--color-accent);
+  font-weight: $font-weight-medium;
+}
+
+// ── Backdrop ─────────────────────────────────────────────────
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-dropdown;
+  background: var(--color-overlay);
+  backdrop-filter: blur(4px);
+  animation: fade-in 0.3s ease;
+}

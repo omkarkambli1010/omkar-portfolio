@@ -1,0 +1,130 @@
+// ============================================================
+// SCSS MIXINS — shared utilities imported by every module
+// ============================================================
+@use './variables' as *;
+
+// ── Responsive (mobile-first) ────────────────────────────────
+@mixin respond-to($bp) {
+  @if      $bp == xs  { @media (min-width: $bp-xs)  { @content; } }
+  @else if $bp == sm  { @media (min-width: $bp-sm)  { @content; } }
+  @else if $bp == md  { @media (min-width: $bp-md)  { @content; } }
+  @else if $bp == lg  { @media (min-width: $bp-lg)  { @content; } }
+  @else if $bp == xl  { @media (min-width: $bp-xl)  { @content; } }
+  @else if $bp == 2xl { @media (min-width: $bp-2xl) { @content; } }
+}
+
+// ── Container ────────────────────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: $max-width-xl;
+  margin-inline: auto;
+  padding-inline: $space-4;
+
+  @include respond-to(md)  { padding-inline: $space-8; }
+  @include respond-to(xl)  { padding-inline: $space-12; }
+}
+
+// ── Flexbox ──────────────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Typography ───────────────────────────────────────────────
+@mixin text-gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin heading-display {
+  font-family: $font-display;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: -0.02em;
+}
+
+// ── Visual Effects ───────────────────────────────────────────
+@mixin glass-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@mixin glass-nav {
+  background: var(--color-nav-bg);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@mixin glow-accent {
+  box-shadow: 0 0 32px var(--color-glow),
+              0 0 64px rgba(var(--color-accent-rgb), 0.1);
+}
+
+@mixin card-shadow {
+  box-shadow: 0 4px 24px var(--color-shadow),
+              0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@mixin card-shadow-hover {
+  box-shadow: 0 8px 40px var(--color-shadow),
+              0 0 24px var(--color-glow),
+              0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+// ── Accessibility ────────────────────────────────────────────
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ── Overflow ─────────────────────────────────────────────────
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clamp-lines($lines) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}
+
+// ── Pseudo Elements ──────────────────────────────────────────
+@mixin pseudo-cover {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+// ── Section layout ───────────────────────────────────────────
+@mixin section-padding {
+  padding-block: $space-20;
+
+  @include respond-to(md) { padding-block: $space-32; }
+}

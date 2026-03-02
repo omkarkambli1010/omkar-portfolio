@@ -1,0 +1,12 @@
+// ============================================================
+// STYLES BARREL — forwards all shared partials
+// Import this in component SCSS modules for full access to
+// mixins and variables.
+// ============================================================
+
+// NOTE: _themes.scss and _animations.scss are NOT forwarded here
+// because they inject global CSS and should only be imported once
+// in globals.scss. Mixins and variables are safe to forward.
+
+@forward './variables';
+@forward './mixins';

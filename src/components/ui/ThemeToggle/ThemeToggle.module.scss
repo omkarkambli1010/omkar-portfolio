@@ -1,0 +1,75 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: $space-1;
+  border-radius: $radius-full;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+.track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: $radius-full;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  transition: background $transition-base, border-color $transition-base;
+}
+
+.track--light {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  background: var(--color-text);
+  transition: transform $transition-spring, background $transition-base;
+  @include flex-center;
+
+  .track--light & {
+    transform: translateX(22px);
+    background: #fff;
+  }
+}
+
+.icon {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  transition: opacity $transition-fast, transform $transition-base;
+}
+
+.icon--moon {
+  opacity: 1;
+  transform: scale(1);
+
+  .track--light & {
+    opacity: 0;
+    transform: scale(0.5) rotate(90deg);
+  }
+}
+
+.icon--sun {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+  color: var(--color-accent);
+
+  .track--light & {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

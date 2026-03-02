@@ -1,0 +1,116 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border-radius: $radius-full;
+  font-family: $font-body;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  // Shine effect on hover
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover::after {
+    left: 100%;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ── Variants ─────────────────────────────────────────────────
+.btn--primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 20px var(--color-glow);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--color-glow);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb), 0.06);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid transparent;
+
+  &:hover {
+    color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb), 0.08);
+  }
+}
+
+// ── Sizes ────────────────────────────────────────────────────
+.btn--sm {
+  padding: $space-2 $space-4;
+  font-size: $text-sm;
+}
+
+.btn--md {
+  padding: $space-3 $space-6;
+  font-size: $text-base;
+}
+
+.btn--lg {
+  padding: $space-4 $space-8;
+  font-size: $text-lg;
+
+  @include respond-to(md) {
+    padding: $space-4 $space-12;
+  }
+}

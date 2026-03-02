@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.btn {
+  position: fixed;
+  bottom: $space-8;
+  right: $space-6;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  background: var(--color-accent);
+  color: #fff;
+  @include flex-center;
+  z-index: $z-sticky;
+  opacity: 0;
+  transform: translateY(16px) scale(0.8);
+  transition: opacity $transition-base, transform $transition-spring,
+    box-shadow $transition-base;
+  pointer-events: none;
+  box-shadow: 0 4px 16px var(--color-glow);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px var(--color-glow);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @include respond-to(md) {
+    bottom: $space-12;
+    right: $space-8;
+  }
+}
+
+.btn--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}

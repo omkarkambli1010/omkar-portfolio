@@ -1,0 +1,207 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px; // navbar height
+}
+
+// ── Background Elements ──────────────────────────────────────
+.blob {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: clamp(400px, 60vw, 900px);
+  height: clamp(400px, 60vw, 900px);
+  border-radius: $radius-full;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--color-accent-rgb), 0.18) 0%,
+    rgba(var(--color-accent-rgb), 0.06) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blobSecondary {
+  position: absolute;
+  bottom: 10%;
+  left: -15%;
+  width: clamp(300px, 40vw, 600px);
+  height: clamp(300px, 40vw, 600px);
+  border-radius: $radius-full;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.1) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.4;
+}
+
+// ── Content ──────────────────────────────────────────────────
+.content {
+  position: relative;
+  z-index: 1;
+  padding-block: $space-20;
+
+  @include respond-to(md) {
+    padding-block: $space-24;
+  }
+}
+
+// ── Status Badge ─────────────────────────────────────────────
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  border: 1px solid var(--color-border-accent);
+  background: rgba(var(--color-accent-rgb), 0.08);
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+  margin-bottom: $space-6;
+  letter-spacing: 0.02em;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: var(--color-success);
+  animation: pulse-glow 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+// ── Name ─────────────────────────────────────────────────────
+.name {
+  @include heading-display;
+  font-size: clamp($text-6xl, 10vw, $text-8xl);
+  color: var(--color-text);
+  line-height: 1.05;
+  margin-bottom: $space-4;
+  letter-spacing: -0.03em;
+}
+
+.nameWrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.nameWord {
+  display: inline-block;
+  opacity: 0; // GSAP will animate this in
+}
+
+.nameAccent {
+  @include text-gradient;
+}
+
+// ── Subtitle ─────────────────────────────────────────────────
+.subtitle {
+  font-family: $font-display;
+  font-size: clamp($text-2xl, 3.5vw, $text-4xl);
+  color: var(--color-text-secondary);
+  font-weight: $font-weight-semibold;
+  margin-bottom: $space-6;
+  letter-spacing: -0.02em;
+}
+
+.subtitleGradient {
+  @include text-gradient;
+}
+
+// ── Tagline ──────────────────────────────────────────────────
+.tagline {
+  font-size: clamp($text-base, 1.8vw, $text-xl);
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+  line-height: $line-height-relaxed;
+  margin-bottom: $space-8;
+}
+
+// ── CTA ──────────────────────────────────────────────────────
+.cta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-4;
+  margin-bottom: $space-8;
+}
+
+// ── Tech Stack Pills ─────────────────────────────────────────
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  align-items: center;
+}
+
+.stackPill {
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  letter-spacing: 0.03em;
+}
+
+.stackMore {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  padding: $space-1 $space-2;
+}
+
+// ── Scroll Indicator ─────────────────────────────────────────
+.scrollIndicator {
+  position: absolute;
+  bottom: $space-8;
+  left: 50%;
+  transform: translateX(-50%);
+  @include flex-col;
+  align-items: center;
+  gap: $space-2;
+  z-index: 1;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  border-radius: $radius-full;
+}
+
+.scrollLabel {
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  writing-mode: vertical-rl;
+}

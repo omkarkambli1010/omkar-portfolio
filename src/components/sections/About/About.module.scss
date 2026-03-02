@@ -1,0 +1,152 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.about {
+  @include section-padding;
+  background: var(--color-bg-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+
+  @include respond-to(lg) {
+    grid-template-columns: 360px 1fr;
+    gap: $space-16;
+    align-items: start;
+  }
+}
+
+// ── Image ─────────────────────────────────────────────────────
+.imageCol {
+  display: flex;
+  justify-content: center;
+
+  @include respond-to(lg) {
+    justify-content: flex-start;
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: min(320px, 80vw);
+  aspect-ratio: 4 / 5;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: $radius-2xl;
+  background: var(--color-bg-elevated);
+  padding: $space-6;
+}
+
+.imageFrame {
+  position: absolute;
+  inset: -12px;
+  border-radius: $radius-2xl;
+  border: 2px solid var(--color-border-accent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+// ── Bio ───────────────────────────────────────────────────────
+.bioCol {
+  @include flex-col;
+  gap: $space-6;
+
+  p {
+    font-size: $text-base;
+    color: var(--color-text-secondary);
+    line-height: $line-height-relaxed;
+
+    @include respond-to(md) {
+      font-size: $text-lg;
+    }
+  }
+}
+
+// ── Stats ─────────────────────────────────────────────────────
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+  padding: $space-6;
+  border-radius: $radius-xl;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.stat {
+  @include flex-col;
+  align-items: center;
+  gap: $space-1;
+  text-align: center;
+}
+
+.statValue {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $font-weight-bold;
+  @include text-gradient;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: $text-xs;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+// ── Tech Stack ────────────────────────────────────────────────
+.techSection {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.techTitle {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-2;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: var(--color-text-secondary);
+  padding: $space-2;
+  border-radius: $radius-md;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb), 0.06);
+  }
+}
+
+.techDot {
+  color: var(--color-accent);
+  font-size: $text-xs;
+}

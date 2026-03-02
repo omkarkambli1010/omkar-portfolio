@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), 0.1);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+  transition: all 150ms ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(var(--color-accent-rgb), 0.18);
+    border-color: rgba(var(--color-accent-rgb), 0.35);
+  }
+}
+
+.tag--sm {
+  padding: 2px $space-2;
+  font-size: $text-xs;
+}

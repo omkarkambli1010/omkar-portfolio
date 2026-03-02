@@ -1,0 +1,112 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.skills {
+  @include section-padding;
+  background: var(--color-bg-secondary);
+}
+
+// ── Tabs ─────────────────────────────────────────────────────
+.tabs {
+  display: flex;
+  gap: $space-2;
+  margin-bottom: $space-10;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: $space-2 $space-5;
+  border-radius: $radius-full;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all $transition-base;
+  letter-spacing: 0.02em;
+
+  &:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+.tab--active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 16px var(--color-glow);
+}
+
+// ── Grid ─────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-8;
+  }
+}
+
+// ── Skill Bar ─────────────────────────────────────────────────
+.skillBar {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.skillBarHeader {
+  @include flex-between;
+}
+
+.skillBarName {
+  font-size: $text-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  font-family: $font-mono;
+}
+
+.skillBarLevel {
+  font-size: $text-xs;
+  color: var(--color-accent);
+  font-family: $font-mono;
+  font-weight: $font-weight-medium;
+}
+
+.skillBarTrack {
+  width: 100%;
+  height: 6px;
+  border-radius: $radius-full;
+  background: var(--color-bg-elevated);
+  overflow: hidden;
+  position: relative;
+}
+
+.skillBarFill {
+  height: 100%;
+  border-radius: $radius-full;
+  background: var(--gradient-accent);
+  position: relative;
+  width: 0; // animated by GSAP
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2s ease infinite;
+    background-size: 200% 100%;
+  }
+}

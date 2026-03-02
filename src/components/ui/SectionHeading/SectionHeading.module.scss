@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.heading {
+  margin-bottom: $space-12;
+
+  @include respond-to(md) {
+    margin-bottom: $space-16;
+  }
+}
+
+.heading--center {
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: $space-3;
+  position: relative;
+  padding-left: $space-6;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $space-4;
+    height: 1px;
+    background: var(--color-accent);
+  }
+}
+
+.heading--center .label {
+  padding-left: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.title {
+  @include heading-display;
+  font-size: $text-4xl;
+  color: var(--color-text);
+  margin-bottom: $space-4;
+
+  @include respond-to(md) {
+    font-size: $text-5xl;
+  }
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+  line-height: $line-height-relaxed;
+
+  .heading--center & {
+    margin-inline: auto;
+  }
+}
