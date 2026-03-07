@@ -1,190 +1,105 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap } from '@/lib/gsap';
 import MagneticButton from '@/components/ui/MagneticButton/MagneticButton';
 import Button from '@/components/ui/Button/Button';
 import styles from './Hero.module.scss';
 
-export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const blobRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-  const statusRef = useRef<HTMLDivElement>(null);
+const PROFILE_IMAGE =
+  'https://media.licdn.com/dms/image/v2/D4D03AQHezSmKIwiQVg/profile-displayphoto-scale_400_400/B4DZkqV99nH0Ag-/0/1757352037108?e=1774483200&v=beta&t=7H5N26R4cRmPC5kH4ICJMdPx1EDVhTo9-7cEf_6FtRE';
 
-  // Page load intro animation
+export default function Hero() {
+  const sectionRef   = useRef<HTMLElement>(null);
+  const statusRef    = useRef<HTMLDivElement>(null);
+  const introRef     = useRef<HTMLParagraphElement>(null);
+  const row1Ref      = useRef<HTMLSpanElement>(null);
+  const row2Ref      = useRef<HTMLSpanElement>(null);
+  const photoRef     = useRef<HTMLDivElement>(null);
+  const subRowRef    = useRef<HTMLDivElement>(null);
+  const ctaRef       = useRef<HTMLDivElement>(null);
+  const stackRef     = useRef<HTMLDivElement>(null);
+  const scrollRef    = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // Stagger reveal name words
-      tl.fromTo(
-        `.${styles.nameWord}`,
-        { y: '110%', opacity: 0 },
-        { y: '0%', opacity: 1, duration: 0.9, stagger: 0.1 },
-        0
-      )
+      tl
+        .fromTo(statusRef.current, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 0)
+        .fromTo(introRef.current,  { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 0.1)
+        .fromTo(row1Ref.current,   { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.85 }, 0.22)
+        .fromTo(row2Ref.current,   { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.85 }, 0.36)
         .fromTo(
-          subtitleRef.current,
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          0.5
+          photoRef.current,
+          { clipPath: 'inset(0 0 100% 0)', opacity: 0 },
+          { clipPath: 'inset(0 0 0% 0)',   opacity: 1, duration: 1.1, ease: 'power4.out' },
+          0.18
         )
-        .fromTo(
-          taglineRef.current,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          0.7
-        )
-        .fromTo(
-          statusRef.current,
-          { y: 16, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          0.85
-        )
-        .fromTo(
-          ctaRef.current,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          0.95
-        )
-        .fromTo(
-          scrollIndicatorRef.current,
-          { y: 12, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          1.3
-        );
+        .fromTo(subRowRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6  }, 0.75)
+        .fromTo(ctaRef.current,    { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 0.9)
+        .fromTo(stackRef.current,  { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5  }, 1.05)
+        .fromTo(scrollRef.current, { opacity: 0 },        { opacity: 1, duration: 0.5 },        1.5);
 
-      // Bouncing scroll indicator
-      gsap.to(scrollIndicatorRef.current, {
-        y: 10,
-        duration: 1.2,
-        ease: 'power1.inOut',
-        repeat: -1,
-        yoyo: true,
-        delay: 2,
-      });
-
-      // Blob floating animation
-      gsap.to(blobRef.current, {
-        y: -40,
-        x: 20,
-        scale: 1.08,
-        duration: 6,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
+      gsap.to(scrollRef.current, {
+        y: 10, duration: 1.2, ease: 'power1.inOut', repeat: -1, yoyo: true, delay: 2,
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Parallax on scroll
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(blobRef.current, {
-        yPercent: -30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5,
-        },
-      });
-
-      gsap.to(headingRef.current, {
-        yPercent: 20,
-        opacity: 0.3,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Mouse parallax on blob
-  useEffect(() => {
-    const section = sectionRef.current;
-    const blob = blobRef.current;
-    if (!section || !blob) return;
-
-    const quickX = gsap.quickTo(blob, 'x', { duration: 1.5, ease: 'power2.out' });
-    const quickY = gsap.quickTo(blob, 'y', { duration: 1.5, ease: 'power2.out' });
-
-    const onMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 60;
-      const y = (e.clientY / innerHeight - 0.5) * 40;
-      quickX(x);
-      quickY(y);
-    };
-
-    section.addEventListener('mousemove', onMove);
-    return () => section.removeEventListener('mousemove', onMove);
-  }, []);
-
-  const scrollToProjects = () => {
-    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollTo = (id: string) =>
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section ref={sectionRef} className={styles.hero} id="hero" aria-label="Introduction">
-      {/* Ambient background blob */}
-      <div ref={blobRef} className={styles.blob} aria-hidden="true" />
-      <div className={styles.blobSecondary} aria-hidden="true" />
+      <div className={styles.gridBg} aria-hidden="true" />
 
-      {/* Grid pattern overlay */}
-      <div className={styles.grid} aria-hidden="true" />
+      {/*
+       * .inner is position:relative — the photo is position:absolute inside it.
+       * On desktop, .inner gets padding-right = photo width + gap so text never
+       * slides under the photo.
+       */}
+      <div className={`${styles.inner} container`}>
 
-      <div className={`${styles.content} container`}>
-        {/* Status badge */}
+        {/* Status */}
         <div ref={statusRef} className={styles.status}>
           <span className={styles.statusDot} aria-hidden="true" />
-          Open to new opportunities · Mumbai, India
+          Available for work · Mumbai, India
         </div>
 
-        {/* Main heading */}
-        <h1 ref={headingRef} className={styles.name} aria-label="Omkar Kambli">
-          <span className={styles.nameWrap}>
-            <span className={styles.nameWord}>Hi, I&apos;m</span>
-          </span>{' '}
-          <span className={styles.nameWrap}>
-            <span className={`${styles.nameWord} ${styles.nameAccent}`}>Omkar</span>
+        {/* Intro line */}
+        <p ref={introRef} className={styles.intro}>
+          Hi, my name is <strong>Omkar</strong> and I am a
+        </p>
+
+        {/* Big text — each row clips the span for slide-up reveal */}
+        <div className={styles.nameRow}>
+          <span ref={row1Ref} className={`${styles.bigText} ${styles.bigOutline}`}>
+            Frontend
           </span>
-        </h1>
+        </div>
 
-        {/* Role */}
-        <p ref={subtitleRef} className={styles.subtitle}>
-          <span className={styles.subtitleGradient}>Frontend Developer</span>
-          {' '}& UI/UX Engineer
-        </p>
+        <div className={styles.nameRow}>
+          <span ref={row2Ref} className={`${styles.bigText} ${styles.bigFilled}`}>
+            Developer.
+          </span>
+        </div>
 
-        {/* Tagline */}
-        <p ref={taglineRef} className={styles.tagline}>
-          I build responsive, pixel-perfect web experiences with a sharp eye for design —
-          turning Figma wireframes into fast, accessible, and engaging interfaces.
-        </p>
+        {/* Sub row */}
+        <div ref={subRowRef} className={styles.subRow}>
+          <span className={styles.amp}>&amp;</span>
+          <span className={styles.subRole}>UI/UX Engineer</span>
+          <span className={styles.sep} aria-hidden="true">—</span>
+          <span className={styles.location}>based in Mumbai, India.</span>
+        </div>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <div ref={ctaRef} className={styles.cta}>
           <MagneticButton>
-            <Button variant="primary" size="lg" onClick={scrollToProjects}>
+            <Button variant="primary" size="lg" onClick={() => scrollTo('#projects')}>
               View My Work
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true" width={18} height={18}>
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -193,25 +108,40 @@ export default function Hero() {
             </Button>
           </MagneticButton>
           <MagneticButton>
-            <Button variant="outline" size="lg" onClick={scrollToContact}>
-              Contact Me
+            <Button variant="outline" size="lg" onClick={() => scrollTo('#contact')}>
+              Let&apos;s Talk
             </Button>
           </MagneticButton>
         </div>
 
         {/* Tech pills */}
-        <div className={styles.stack}>
-          {['Angular', 'React', 'HTML/CSS', 'Figma'].map((tech) => (
-            <span key={tech} className={styles.stackPill}>
-              {tech}
-            </span>
+        <div ref={stackRef} className={styles.stack}>
+          {['Angular', 'React', 'HTML/CSS', 'Figma', 'TypeScript'].map((t) => (
+            <span key={t} className={styles.pill}>{t}</span>
           ))}
-          <span className={styles.stackMore}>+8 more</span>
+          <span className={styles.pillMore}>+7 more</span>
+        </div>
+
+        {/* ── Photo — positioned absolute within .inner ──────────
+         *  Sits on the RIGHT, spanning the vertical space of the
+         *  intro + big text block. Text content is protected by
+         *  padding-right on .inner (desktop only).
+         */}
+        <div ref={photoRef} className={styles.photo}>
+          <Image
+            src={PROFILE_IMAGE}
+            alt="Omkar Kambli — Frontend Developer & UI/UX Engineer"
+            fill
+            className={styles.photoImg}
+            priority
+            sizes="(max-width: 1024px) 0vw, 370px"
+          />
+          <div className={styles.photoFade} aria-hidden="true" />
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div ref={scrollIndicatorRef} className={styles.scrollIndicator} aria-hidden="true">
+      {/* Scroll cue */}
+      <div ref={scrollRef} className={styles.scrollCue} aria-hidden="true">
         <div className={styles.scrollLine} />
         <span className={styles.scrollLabel}>scroll</span>
       </div>

@@ -9,6 +9,20 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.sbisecurities.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.motilaloswal.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [64, 128, 256, 384],

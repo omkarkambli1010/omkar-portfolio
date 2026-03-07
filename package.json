@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-images": "node scripts/generate-project-images.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -19,6 +20,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

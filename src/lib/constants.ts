@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 // ── Social Links ─────────────────────────────────────────────
 export const SOCIAL_LINKS = [
   { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/omkar-kambli-b86549b6/', icon: 'linkedin' },
-  { label: 'Instagram', href: 'https://www.instagram.com/omkar_kambli_19/',          icon: 'instagram' },
+  { label: 'Instagram', href: 'https://www.instagram.com/omkarkambli_19/',          icon: 'instagram' },
   { label: 'Email',     href: 'mailto:barcaomkarkambli@gmail.com',                   icon: 'mail'     },
 ] as const;
 
@@ -22,47 +22,45 @@ export const SOCIAL_LINKS = [
 export const PROJECTS: Project[] = [
   {
     id: 'project-1',
-    title: 'Union Budget 2026-27 Webpage',
+    title: 'SBI Securities Website',
     description:
-      'A fast, responsive, and user-friendly government budget webpage built for SBI Securities. Focused on clarity of financial data presentation with optimised performance and accessibility.',
-    tags: ['Angular', 'HTML5', 'CSS3', 'Bootstrap', 'Responsive Design'],
-    liveUrl: 'https://sbisec.co.in',
-    imageSrc: '/images/projects/budget.jpg',
+      'A fast, responsive, and user-friendly government webpage built for SBI Securities. Focused on clarity of financial data presentation with optimised performance and accessibility.',
+    tags: ['Angular', 'HTML5', 'CSS3', 'Go Lang'],
+    liveUrl: 'https://www.sbisecurities.in/',
+    // Run `npm run generate-images` to generate with Gemini AI
+    imageSrc: '/images/projects/sbisecurities.jpg',
     featured: true,
   },
   {
     id: 'project-2',
-    title: 'DemandData — Analytics Platform',
+    title: 'Motilal Oswal Website',
     description:
-      'A B2B analytics web platform for demand forecasting. Built responsive CMS pages and admin dashboards with complex data visualisation and interactive filters.',
-    tags: ['Angular', 'TypeScript', 'Bootstrap', 'REST API', 'Figma'],
-    imageSrc: '/images/projects/demanddata.jpg',
+    'A dynamic, content-rich website for Motilal Oswal, showcasing financial products and services',
+    tags: ['Angular', 'TypeScript', 'Bootstrap', 'REST API'],
+    liveUrl: 'https://www.motilaloswal.com/',
+    // Run `npm run generate-images` to generate with Gemini AI
+    imageSrc: '/images/projects/motilaloswal.jpg',
     featured: false,
   },
   {
     id: 'project-3',
-    title: 'MentorMyBoard — EdTech Platform',
+    title: 'AthletesCloud — Mentorship Platform',
     description:
-      'An online mentorship and learning management system connecting students with industry mentors. Built the full frontend including authentication flows, dashboards, and course UI.',
-    tags: ['Angular', 'HTML5', 'CSS3', 'Bootstrap', 'JavaScript'],
-    imageSrc: '/images/projects/mentormyboard.jpg',
-    featured: false,
-  },
-  {
-    id: 'project-4',
-    title: 'GuardTrac — Security Dashboard',
-    description:
-      'A real-time security monitoring and tracking web application. Developed pixel-perfect responsive UI components and admin interfaces with live data feeds.',
-    tags: ['React', 'JavaScript', 'CSS3', 'Bootstrap', 'REST API'],
-    imageSrc: '/images/projects/guardtrac.jpg',
+    'A mentorship platform connecting athletes with industry experts. Developed responsive landing pages and user dashboards, integrating scheduling and content management features.',
+    tags: ['Angular', 'HTML5', 'CSS3', 'Bootstrap'],
+    liveUrl: 'https://www.athletescloud.com/',
+    // Run `node scripts/generate-project-images.mjs` to generate this image with Gemini AI
+    imageSrc: '/images/projects/athletescloud.jpg',
     featured: false,
   },
   {
     id: 'project-5',
     title: 'EasyTutor — Online Tutoring',
     description:
-      'A cross-device tutoring platform with scheduling, video sessions, and progress tracking. Led the UI design and implementation from wireframes to production.',
+    'A cross-device tutoring platform with scheduling, video sessions, and progress tracking. Led the UI design and implementation from wireframes to production.',
     tags: ['Angular', 'Figma', 'Adobe XD', 'CSS3', 'JavaScript'],
+    liveUrl: 'https://www.sbisecurities.in/',
+    // Run `node scripts/generate-project-images.mjs` to generate this image with Gemini AI
     imageSrc: '/images/projects/easytutor.jpg',
     featured: false,
   },

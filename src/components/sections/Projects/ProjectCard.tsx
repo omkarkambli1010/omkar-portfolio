@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
 import type { Project } from '@/types/project';
 import Tag from '@/components/ui/Tag/Tag';
 import styles from './Projects.module.scss';
@@ -8,18 +12,31 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { title, description, tags, liveUrl, repoUrl, imageSrc, featured } = project;
+  const [imgError, setImgError] = useState(false);
+
+  const showImage = imageSrc && !imgError;
 
   return (
-    <article
-      className={`${styles.card} ${featured ? styles['card--featured'] : ''}`}
-    >
+    <article className={`${styles.card} ${featured ? styles['card--featured'] : ''}`}>
       {/* Image */}
       <div className={styles.cardImage}>
         <div className={styles.cardImageInner}>
-          {/* Placeholder gradient — replace with next/image when real images exist */}
-          <div className={styles.cardImagePlaceholder} aria-hidden="true" />
+          {showImage ? (
+            <Image
+              src={imageSrc}
+              alt={`${title} screenshot`}
+              fill
+              className={styles.cardImg}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className={styles.cardImagePlaceholder} aria-hidden="true" />
+          )}
         </div>
+
         {featured && <span className={styles.featuredBadge}>Featured</span>}
+
         {/* Overlay with links */}
         <div className={styles.cardOverlay} aria-hidden="true">
           <div className={styles.overlayLinks}>
