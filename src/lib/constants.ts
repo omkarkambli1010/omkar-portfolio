@@ -53,17 +53,6 @@ export const PROJECTS: Project[] = [
     imageSrc: '/images/projects/athletescloud.jpg',
     featured: false,
   },
-  {
-    id: 'project-5',
-    title: 'EasyTutor — Online Tutoring',
-    description:
-    'A cross-device tutoring platform with scheduling, video sessions, and progress tracking. Led the UI design and implementation from wireframes to production.',
-    tags: ['Angular', 'Figma', 'Adobe XD', 'CSS3', 'JavaScript'],
-    liveUrl: 'https://www.sbisecurities.in/',
-    // Run `node scripts/generate-project-images.mjs` to generate this image with Gemini AI
-    imageSrc: '/images/projects/easytutor.jpg',
-    featured: false,
-  },
 ];
 
 // ── Skills ───────────────────────────────────────────────────
@@ -91,7 +80,7 @@ export const EXPERIENCE: TimelineItem[] = [
   {
     id: 'exp-1',
     company: 'SBI Securities Ltd.',
-    role: 'Senior Frontend Developer',
+    role: 'Senior Software Developer',
     period: '2024 – Present',
     location: 'Mumbai, India',
     description: [
@@ -151,7 +140,7 @@ export const TECH_STACK = [
 // ── Personal Info ────────────────────────────────────────────
 export const PERSONAL_INFO = {
   name: 'Omkar Kambli',
-  title: 'Frontend Developer & UI/UX Engineer',
+  title: 'Software Developer & UI/UX Engineer',
   location: 'Mumbai, India',
   email: 'barcaomkarkambli@gmail.com',
   phone: '+91 9768630661',

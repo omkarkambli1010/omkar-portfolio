@@ -7,13 +7,13 @@ import './globals.scss';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Omkar Kambli — Frontend Developer & UI/UX Engineer',
+    default: 'Omkar Kambli — Software Developer & UI/UX Engineer',
     template: '%s | Omkar Kambli',
   },
   description:
-    'Frontend Developer & UI/UX Engineer based in Mumbai, India — specializing in Angular, React, HTML/CSS, Figma and Bootstrap to craft responsive, pixel-perfect web experiences.',
+    'Software Developer & UI/UX Engineer based in Mumbai, India — specializing in Angular, React, HTML/CSS, Figma and Bootstrap to craft responsive, pixel-perfect web experiences.',
   keywords: [
-    'Omkar Kambli', 'frontend developer', 'UI/UX engineer', 'portfolio',
+    'Omkar Kambli', 'Software Developer', 'UI/UX engineer', 'portfolio',
     'angular', 'react', 'html', 'css', 'bootstrap', 'figma', 'javascript',
     'mumbai', 'india', 'web developer',
   ],
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Omkar Kambli — Frontend Developer & UI/UX Engineer',
+    title: 'Omkar Kambli — Software Developer & UI/UX Engineer',
     description:
-      'Frontend Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
+      'Software Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Omkar Kambli — Portfolio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Omkar Kambli — Frontend Developer & UI/UX Engineer',
-    description: 'Frontend Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
+    title: 'Omkar Kambli — Software Developer & UI/UX Engineer',
+    description: 'Software Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
     images: ['/images/og-image.jpg'],
   },
   robots: { index: true, follow: true },

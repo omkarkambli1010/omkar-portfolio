@@ -78,7 +78,7 @@ export default function Hero() {
         {/* Big text — each row clips the span for slide-up reveal */}
         <div className={styles.nameRow}>
           <span ref={row1Ref} className={`${styles.bigText} ${styles.bigOutline}`}>
-            Frontend
+            Software
           </span>
         </div>
 
@@ -130,7 +130,7 @@ export default function Hero() {
         <div ref={photoRef} className={styles.photo}>
           <Image
             src={PROFILE_IMAGE}
-            alt="Omkar Kambli — Frontend Developer & UI/UX Engineer"
+            alt="Omkar Kambli — Software Developer & UI/UX Engineer"
             fill
             className={styles.photoImg}
             priority
