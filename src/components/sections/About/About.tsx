@@ -92,10 +92,9 @@ export default function About() {
           <div className={styles.imageCol}>
             <div ref={imageRef} className={styles.imageWrap}>
               <Image
-                src="https://media.licdn.com/dms/image/v2/D4D03AQHezSmKIwiQVg/profile-displayphoto-scale_400_400/B4DZkqV99nH0Ag-/0/1757352037108?e=1774483200&v=beta&t=7H5N26R4cRmPC5kH4ICJMdPx1EDVhTo9-7cEf_6FtRE"
+                src="/images/IMG_5343.jpeg"
                 alt="Omkar Kambli"
-                width={340}
-                height={340}
+                fill
                 className={styles.profileImage}
                 priority
               />

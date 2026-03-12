@@ -29,6 +29,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://www.sbisecurities.in/',
     // Run `npm run generate-images` to generate with Gemini AI
     imageSrc: '/images/projects/sbisecurities.jpg',
+    logoSrc: '/images/sbi-securities-logo.png',
     featured: true,
   },
   {
@@ -40,6 +41,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://www.motilaloswal.com/',
     // Run `npm run generate-images` to generate with Gemini AI
     imageSrc: '/images/projects/motilaloswal.jpg',
+    logoSrc: '/images/motilal oswal.svg',
     featured: false,
   },
   {
@@ -51,6 +53,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://www.athletescloud.com/',
     // Run `node scripts/generate-project-images.mjs` to generate this image with Gemini AI
     imageSrc: '/images/projects/athletescloud.jpg',
+    logoSrc: '/images/athlete cloud.png',
     featured: false,
   },
 ];
@@ -64,13 +67,15 @@ export const SKILLS: Skill[] = [
   { name: 'Bootstrap',   icon: '/icons/bootstrap.svg',   level: 90,  category: 'frontend' },
   { name: 'JavaScript',  icon: '/icons/javascript.svg',  level: 65,  category: 'frontend' },
   { name: 'Angular',     icon: '/icons/angular.svg',     level: 75,  category: 'frontend' },
-  { name: 'React',       icon: '/icons/react.svg',       level: 55,  category: 'frontend' },
+  // Backend
+  { name: 'Go Lang',     icon: '/icons/go.svg',          level: 65,  category: 'devops'   },
+  { name: 'MSSQL',       icon: '/icons/mssql.svg',       level: 70,  category: 'devops'   },
+  { name: 'PostgreSQL',  icon: '/icons/postgres.svg',    level: 55,  category: 'devops'   },
   // Design
   { name: 'Figma',       icon: '/icons/figma.svg',       level: 65,  category: 'design' },
   { name: 'Adobe XD',    icon: '/icons/adobexd.svg',     level: 55,  category: 'design' },
   { name: 'Photoshop',   icon: '/icons/photoshop.svg',   level: 40,  category: 'design' },
   // DevOps & Tools
-  { name: 'WordPress',   icon: '/icons/wordpress.svg',   level: 55,  category: 'devops' },
   { name: 'Git/GitHub',  icon: '/icons/git.svg',         level: 80,  category: 'devops' },
   { name: 'Netlify',     icon: '/icons/vercel.svg',      level: 70,  category: 'devops' },
 ];

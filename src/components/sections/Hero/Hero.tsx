@@ -7,8 +7,6 @@ import MagneticButton from '@/components/ui/MagneticButton/MagneticButton';
 import Button from '@/components/ui/Button/Button';
 import styles from './Hero.module.scss';
 
-const PROFILE_IMAGE =
-  'https://media.licdn.com/dms/image/v2/D4D03AQHezSmKIwiQVg/profile-displayphoto-scale_400_400/B4DZkqV99nH0Ag-/0/1757352037108?e=1774483200&v=beta&t=7H5N26R4cRmPC5kH4ICJMdPx1EDVhTo9-7cEf_6FtRE';
 
 export default function Hero() {
   const sectionRef   = useRef<HTMLElement>(null);
@@ -129,12 +127,12 @@ export default function Hero() {
          */}
         <div ref={photoRef} className={styles.photo}>
           <Image
-            src={PROFILE_IMAGE}
+            src="/images/banner-img.PNG"
             alt="Omkar Kambli — Software Developer & UI/UX Engineer"
             fill
             className={styles.photoImg}
             priority
-            sizes="(max-width: 1024px) 0vw, 370px"
+            sizes="(max-width: 768px) 0vw, (max-width: 1024px) 260px, 370px"
           />
           <div className={styles.photoFade} aria-hidden="true" />
         </div>

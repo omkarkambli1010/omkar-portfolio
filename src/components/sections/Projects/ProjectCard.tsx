@@ -11,7 +11,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const { title, description, tags, liveUrl, repoUrl, imageSrc, featured } = project;
+  const { title, description, tags, liveUrl, repoUrl, imageSrc, logoSrc, featured } = project;
   const [imgError, setImgError] = useState(false);
 
   const showImage = imageSrc && !imgError;
@@ -36,6 +36,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {featured && <span className={styles.featuredBadge}>Featured</span>}
+
+        {/* Logo banner — bottom-left of the image */}
+        {logoSrc && (
+          <div className={styles.logoBanner}>
+            <div className={styles.logoBannerImg}>
+              <Image
+                src={logoSrc}
+                alt={`${title} logo`}
+                fill
+                className={styles.cardLogoImg}
+                sizes="120px"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Overlay with links */}
         <div className={styles.cardOverlay} aria-hidden="true">

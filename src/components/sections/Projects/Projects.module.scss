@@ -133,6 +133,32 @@
   }
 }
 
+// ── Logo banner on card image ─────────────────────────────────
+.logoBanner {
+  position: absolute;
+  bottom: $space-3;
+  left: $space-3;
+  z-index: 2;
+  padding: $space-2 $space-3;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.logoBannerImg {
+  position: relative;
+  width: 100px;
+  height: 28px;
+}
+
+.cardLogoImg {
+  object-fit: contain;
+  object-position: left center;
+}
+
 // ── Card Body ─────────────────────────────────────────────────
 .cardBody {
   padding: $space-6;
