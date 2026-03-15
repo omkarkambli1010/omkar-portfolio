@@ -9,9 +9,9 @@ import styles from "./About.module.scss";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const bioRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const imageRef   = useRef<HTMLDivElement>(null);
+  const bioRef     = useRef<HTMLDivElement>(null);
+  const gridRef    = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -20,16 +20,8 @@ export default function About() {
         bioRef.current?.querySelectorAll("p") ?? [],
         { y: 32, opacity: 0 },
         {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: bioRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
+          y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power2.out",
+          scrollTrigger: { trigger: bioRef.current, start: "top 80%", toggleActions: "play none none reverse" },
         },
       );
 
@@ -38,15 +30,8 @@ export default function About() {
         imageRef.current,
         { clipPath: "inset(100% 0 0 0)", opacity: 0 },
         {
-          clipPath: "inset(0% 0 0 0)",
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: imageRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
+          clipPath: "inset(0% 0 0 0)", opacity: 1, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: imageRef.current, start: "top 80%", toggleActions: "play none none reverse" },
         },
       );
 
@@ -55,17 +40,8 @@ export default function About() {
         gridRef.current?.querySelectorAll(`.${styles.techItem}`) ?? [],
         { y: 20, opacity: 0, scale: 0.9 },
         {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.05,
-          ease: "back.out(1.5)",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
+          y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.05, ease: "back.out(1.5)",
+          scrollTrigger: { trigger: gridRef.current, start: "top 85%", toggleActions: "play none none reverse" },
         },
       );
     }, sectionRef);
@@ -98,7 +74,6 @@ export default function About() {
                 className={styles.profileImage}
                 priority
               />
-              {/* Accent border frame */}
               <div className={styles.imageFrame} aria-hidden="true" />
             </div>
           </div>
@@ -106,10 +81,10 @@ export default function About() {
           {/* Bio column */}
           <div ref={bioRef} className={styles.bioCol}>
             <p>
-              I&apos;m Omkar Kambli, a Software Developer & UI/UX Engineer based
+              I&apos;m Omkar Kambli, a Software Developer &amp; UI/UX Engineer based
               in Mumbai, India. With 5+ years of professional experience, I
               specialise in building responsive, pixel-perfect web applications
-              and bringing Figma & Adobe XD designs to life using Angular,
+              and bringing Figma &amp; Adobe XD designs to life using Angular,
               React, CSS, SCSS with backend integration using GOLANG and MSSQL.
             </p>
             <p>
@@ -125,7 +100,7 @@ export default function About() {
               {[
                 { value: "5+", label: "Years Experience" },
                 { value: "30+", label: "Projects Delivered" },
-                { value: "4", label: "Companies" },
+                { value: "4",   label: "Companies" },
               ].map(({ value, label }) => (
                 <div key={label} className={styles.stat}>
                   <span className={styles.statValue}>{value}</span>
@@ -140,9 +115,7 @@ export default function About() {
               <div ref={gridRef} className={styles.techGrid}>
                 {TECH_STACK.map((tech) => (
                   <span key={tech} className={styles.techItem}>
-                    <span className={styles.techDot} aria-hidden="true">
-                      ▸
-                    </span>
+                    <span className={styles.techDot} aria-hidden="true">▸</span>
                     {tech}
                   </span>
                 ))}

@@ -53,7 +53,6 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className={styles.hero} id="hero" aria-label="Introduction">
-      <div className={styles.gridBg} aria-hidden="true" />
 
       {/*
        * .inner is position:relative — the photo is position:absolute inside it.

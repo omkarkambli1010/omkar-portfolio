@@ -98,10 +98,13 @@ $photo-gap:      $space-12;
 .bigText {
   display: block;
   font-family: $font-display;
-  font-size: clamp(3rem, 8.5vw, 9rem);
+  // Reduced max from 9rem → 8rem so "Developer." never overflows
+  // the padding-right gap reserved for the photo at large viewports.
+  font-size: clamp(2.75rem, 8vw, 8rem);
   font-weight: $font-weight-bold;
   line-height: 0.92;
   letter-spacing: -0.05em;
+  white-space: nowrap;
   cursor: default;
   user-select: none;
 }

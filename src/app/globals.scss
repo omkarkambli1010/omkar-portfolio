@@ -14,15 +14,18 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scrollbar-gutter: stable; // prevents layout shift
+  // Solid base colour — GlobalBackground canvas (z-index:-1) sits above this
+  background-color: var(--color-bg);
 }
 
 body {
   font-family: $font-body;
-  background-color: var(--color-bg);
+  // Transparent so the fixed GlobalBackground canvas shows through
+  background: transparent;
   color: var(--color-text);
   line-height: $line-height-normal;
   overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: color 0.4s ease;
 }
 
 // ── Focus Styles ─────────────────────────────────────────────

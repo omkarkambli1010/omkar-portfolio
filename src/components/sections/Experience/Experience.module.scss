@@ -3,7 +3,7 @@
 
 .experience {
   @include section-padding;
-  background: var(--color-bg);
+  background: var(--color-section);
 }
 
 // ── Timeline ─────────────────────────────────────────────────
@@ -65,7 +65,7 @@
   width: 16px;
   height: 16px;
   border-radius: $radius-full;
-  background: var(--color-bg);
+  background: var(--color-bg-card);
   border: 2px solid var(--color-accent);
   @include flex-center;
   z-index: 1;

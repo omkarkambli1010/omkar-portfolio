@@ -3,9 +3,13 @@ import { ThemeProvider, themeScript } from '@/providers/ThemeProvider';
 import { LenisProvider } from '@/providers/LenisProvider';
 import Navbar from '@/components/layout/Navbar/Navbar';
 import Footer from '@/components/layout/Footer/Footer';
+import GlobalBackgroundLoader from '@/components/layout/GlobalBackground/GlobalBackgroundLoader';
 import './globals.scss';
 
+const SITE_URL = 'https://omkarkambli.dev';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Omkar Kambli — Software Developer & UI/UX Engineer',
     template: '%s | Omkar Kambli',
@@ -13,15 +17,18 @@ export const metadata: Metadata = {
   description:
     'Software Developer & UI/UX Engineer based in Mumbai, India — specializing in Angular, React, HTML/CSS, Figma and Bootstrap to craft responsive, pixel-perfect web experiences.',
   keywords: [
-    'Omkar Kambli', 'Software Developer', 'UI/UX engineer', 'portfolio',
-    'angular', 'react', 'html', 'css', 'bootstrap', 'figma', 'javascript',
-    'mumbai', 'india', 'web developer',
+    'Omkar Kambli', 'Software Developer', 'UI/UX Engineer', 'portfolio',
+    'Angular', 'React', 'HTML', 'CSS', 'Bootstrap', 'Figma', 'JavaScript',
+    'TypeScript', 'Mumbai', 'India', 'web developer', 'frontend developer',
   ],
-  authors: [{ name: 'Omkar Kambli' }],
+  authors: [{ name: 'Omkar Kambli', url: SITE_URL }],
   creator: 'Omkar Kambli',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    url: SITE_URL,
+    siteName: 'Omkar Kambli Portfolio',
     title: 'Omkar Kambli — Software Developer & UI/UX Engineer',
     description:
       'Software Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
@@ -33,7 +40,21 @@ export const metadata: Metadata = {
     description: 'Software Developer & UI/UX Engineer based in Mumbai, crafting responsive and pixel-perfect web experiences.',
     images: ['/images/og-image.jpg'],
   },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Omkar Kambli',
+  url: SITE_URL,
+  jobTitle: 'Software Developer & UI/UX Engineer',
+  description: 'Software Developer & UI/UX Engineer based in Mumbai, India',
+  address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressCountry: 'IN' },
+  knowsAbout: ['Angular', 'React', 'TypeScript', 'HTML', 'CSS', 'Figma', 'Bootstrap', 'JavaScript'],
+  sameAs: [
+    'https://www.linkedin.com/in/omkar-kambli',
+  ],
 };
 
 export default function RootLayout({
@@ -46,10 +67,17 @@ export default function RootLayout({
       <head>
         {/* Prevents FOUC — runs synchronously before React hydration */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* JSON-LD structured data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body>
         <ThemeProvider>
           <LenisProvider>
+            {/* Full-page aurora parallax — fixed, z-index: -1 */}
+            <GlobalBackgroundLoader />
             {/* Subtle noise texture for premium feel */}
             <div className="noise-overlay" aria-hidden="true" />
             <Navbar />

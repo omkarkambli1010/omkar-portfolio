@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ['gsap', 'lenis'],
+    optimizePackageImports: ['gsap', 'lenis', 'three'],
   },
 };
 

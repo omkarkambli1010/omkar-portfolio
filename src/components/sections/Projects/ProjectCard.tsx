@@ -18,8 +18,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <article className={`${styles.card} ${featured ? styles['card--featured'] : ''}`}>
-      {/* Image */}
+      {/* Banner */}
       <div className={styles.cardImage}>
+        {/* Screenshot / gradient background */}
         <div className={styles.cardImageInner}>
           {showImage ? (
             <Image
@@ -35,24 +36,24 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
 
-        {featured && <span className={styles.featuredBadge}>Featured</span>}
-
-        {/* Logo banner — bottom-left of the image */}
+        {/* Full-banner logo overlay — centred & large */}
         {logoSrc && (
-          <div className={styles.logoBanner}>
-            <div className={styles.logoBannerImg}>
+          <div className={styles.logoBannerFull}>
+            <div className={styles.logoBannerFullImg}>
               <Image
                 src={logoSrc}
                 alt={`${title} logo`}
                 fill
                 className={styles.cardLogoImg}
-                sizes="120px"
+                sizes="(max-width: 768px) 70vw, 300px"
               />
             </div>
           </div>
         )}
 
-        {/* Overlay with links */}
+        {featured && <span className={styles.featuredBadge}>Featured</span>}
+
+        {/* Overlay with links — appears on hover above logo */}
         <div className={styles.cardOverlay} aria-hidden="true">
           <div className={styles.overlayLinks}>
             {repoUrl && (
