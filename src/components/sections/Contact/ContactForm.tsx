@@ -117,7 +117,7 @@ export default function ContactForm() {
           message:    form.message,
           reply_to:   form.email,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
       );
 
       setStatus('success');
