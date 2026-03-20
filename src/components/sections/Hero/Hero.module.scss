@@ -90,6 +90,14 @@ $photo-gap:      $space-12;
 // ── Big text rows ─────────────────────────────────────────────
 // No overflow:hidden — clipPath on the span handles the reveal.
 // This lets long text (e.g. "Developer.") render at full width.
+// Resets browser h1 defaults — visual appearance handled by .bigText children
+.headingGroup {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: inherit;
+}
+
 .nameRow {
   line-height: 1;
   padding-bottom: 0.05em;

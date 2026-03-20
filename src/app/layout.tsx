@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s | Omkar Kambli',
   },
   description:
-    'Software Developer & UI/UX Engineer based in Mumbai, India — specializing in Angular, React, HTML/CSS, Figma and Bootstrap to craft responsive, pixel-perfect web experiences.',
+    'Software Developer & UI/UX Engineer in Mumbai, India — crafting responsive, pixel-perfect web experiences with Angular, React, TypeScript and Figma.',
   keywords: [
     'Omkar Kambli', 'Software Developer', 'UI/UX Engineer', 'portfolio',
     'Angular', 'React', 'HTML', 'CSS', 'Bootstrap', 'Figma', 'JavaScript',

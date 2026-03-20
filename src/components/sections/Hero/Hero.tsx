@@ -72,18 +72,20 @@ export default function Hero() {
           Hi, my name is <strong>Omkar</strong> and I am a
         </p>
 
-        {/* Big text — each row clips the span for slide-up reveal */}
-        <div className={styles.nameRow}>
-          <span ref={row1Ref} className={`${styles.bigText} ${styles.bigOutline}`}>
-            Software
-          </span>
-        </div>
+        {/* Big text — h1 for SEO; each row clips the span for slide-up reveal */}
+        <h1 className={styles.headingGroup}>
+          <div className={styles.nameRow}>
+            <span ref={row1Ref} className={`${styles.bigText} ${styles.bigOutline}`}>
+              Software
+            </span>
+          </div>
 
-        <div className={styles.nameRow}>
-          <span ref={row2Ref} className={`${styles.bigText} ${styles.bigFilled}`}>
-            Developer.
-          </span>
-        </div>
+          <div className={styles.nameRow}>
+            <span ref={row2Ref} className={`${styles.bigText} ${styles.bigFilled}`}>
+              Developer.
+            </span>
+          </div>
+        </h1>
 
         {/* Sub row */}
         <div ref={subRowRef} className={styles.subRow}>
